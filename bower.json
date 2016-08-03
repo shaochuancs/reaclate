@@ -1,0 +1,10 @@
+{
+  "name": "reaclate",
+  "description": "Boilerplate for web project",
+  "version": "0.1",
+  "homepage": "https://github.com/shaochuancs/reaclate",
+  "private": false,
+  "dependencies": {
+    "bootstrap": "~3.3.6"
+  }
+}

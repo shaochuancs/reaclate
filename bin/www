@@ -1,0 +1,77 @@
+#!/usr/bin/env node
+/**
+ * Created by cshao on 6/5/16.
+ */
+
+"use strict";
+
+const debugServer = require('debug')('reaclate:server');
+const http = require('http');
+const app = require('../app');
+
+const isProdMode = process.env.NODE_ENV === 'production';
+
+startServer();
+
+function startServer() {
+  app.configRoute();
+  app.configErrorHandler(isProdMode);
+  app.configTemplate(isProdMode);
+
+  var appPort = normalizePort(process.env.PORT || '3000');
+  app.set('port', appPort);
+
+  var server = http.createServer(app);
+  server.listen(appPort);
+  server.on('error', onAppError);
+  server.on('listening', onAppListening);
+
+  function normalizePort(val) {
+    var port = parseInt(val, 10);
+
+    if (isNaN(port)) {
+      // named pipe
+      return val;
+    }
+
+    if (port >= 0) {
+      // port number
+      return port;
+    }
+
+    return false;
+  }
+
+  function onAppError(error) {
+    onError(error, appPort);
+  }
+  function onError(error, port) {
+    if (error.syscall !== 'listen') {
+      throw error;
+    }
+
+    var bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
+
+    switch (error.code) {
+      case 'EACCES':
+        debugServer(bind + ' requires elevated privileges');
+        process.exit(1);
+        break;
+      case 'EADDRINUSE':
+        debugServer(bind + ' is already in use');
+        process.exit(1);
+        break;
+      default:
+        throw error;
+    }
+  }
+
+  function onAppListening() {
+    var addr = server.address();
+    onListening(addr, debugServer);
+  }
+  function onListening(addr, debug) {
+    var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
+    debug('Listening on ' + bind);
+  }
+}
