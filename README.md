@@ -1,4 +1,4 @@
-# reaclate
+# reaclate ![Build Status](https://travis-ci.org/shaochuancs/reaclate.svg?branch=master)
 Boilerplate for web project - using React, Node.js, Express, Browserify and Gulp
 
 ## Get Started
