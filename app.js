@@ -10,7 +10,7 @@ const logger = require('morgan');
 const compress = require('compression');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const swig = require('swig');
+const nunjucks = require('nunjucks');
 
 const middleware = require('./middleware/middleware');
 const utils = require('./utils/utils');
@@ -18,10 +18,10 @@ const routes = require('./routes/index');
 
 var app = express();
 
-app.engine('html', swig.renderFile);
-
-// view engine setup
-app.set('views', [path.join(__dirname, 'web/static/compiled/views')]);
+nunjucks.configure([path.join(__dirname, 'web/static/compiled/views')], {
+  autoescape: true,
+  express: app
+});
 app.set('view engine', 'html');
 
 app.use(compress());
@@ -50,12 +50,6 @@ app.configErrorHandler = function(isProdMode) {
 
 app.configTemplate = function(isProdMode) {
   app.set('view cache', isProdMode ? true : false);
-
-  // Override default open/close tag, which conflicts with some frontend framework, such as AngularJS
-  swig.setDefaults({
-    cache: isProdMode ? 'memory' : false,
-    varControls: ['{=', '=}']
-  });
 };
 
 module.exports = app;
