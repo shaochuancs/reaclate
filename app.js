@@ -12,16 +12,26 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const nunjucks = require('nunjucks');
 
+nunjucks.Loader.prototype.isRelative = function(filename) {
+  return filename.substr(0,1) !== '/';
+};
+
 const middleware = require('./middleware/middleware');
 const utils = require('./utils/utils');
 const routes = require('./routes/index');
 
+const isProdMode = process.env.NODE_ENV === 'production';
+
 var app = express();
 
-nunjucks.configure([path.join(__dirname, 'web/static/compiled/views')], {
-  autoescape: true,
+var nunjucksConf = {
   express: app
-});
+};
+if (!isProdMode) {
+  nunjucksConf.watch = true;
+  nunjucksConf.noCache = true;
+}
+nunjucks.configure([path.join(__dirname, 'web/static/compiled/views')], nunjucksConf);
 app.set('view engine', 'html');
 
 app.use(compress());
