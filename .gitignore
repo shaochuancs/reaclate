@@ -38,3 +38,7 @@ jspm_packages
 
 # WebStorm configuration
 .idea
+
+web/static/bower_components/
+web/static/compiled/
+config/constants.js
