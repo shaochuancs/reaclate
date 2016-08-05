@@ -11,10 +11,8 @@ const compress = require('compression');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const nunjucks = require('nunjucks');
-
-nunjucks.Loader.prototype.isRelative = function(filename) {
-  return filename.substr(0,1) !== '/';
-};
+const moreRelative = require('nunjucks-more-relative');
+moreRelative(nunjucks);
 
 const middleware = require('./middleware/middleware');
 const utils = require('./utils/utils');
