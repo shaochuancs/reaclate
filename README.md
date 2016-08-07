@@ -27,7 +27,15 @@ Finally, run the project and you are good to go:
 npm start
 ```
 
-Launch your browser and visit: `http://localhost:3000`
+Launch your browser and visit: `http://localhost:3000/login`
+
+## Usage
+
+Basic, visit: `http://localhost:3000/login`
+
+With flux, visit: `http://localhost:3000/login-flux`
+
+With server side rendering, visit: `http://localhost:3000/login-server-side-rendering`
 
 ## License
 

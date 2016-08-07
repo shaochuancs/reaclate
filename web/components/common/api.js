@@ -7,5 +7,6 @@
 var API_ENDPOINT = '/api';
 
 module.exports = {
-  LOGIN: API_ENDPOINT + '/login'
+  LOGIN: API_ENDPOINT + '/login',
+  SAMPLE_LIST: API_ENDPOINT + '/secure/sample-list'
 };

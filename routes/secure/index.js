@@ -8,7 +8,7 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/my-account', function(req, res) {
-  res.send('<h3>my-account page</h3>');
+  res.render('pc/my-account');
 });
 
 module.exports = router;
