@@ -1,7 +1,7 @@
 "use strict";
 
 var React = require('react');
-var api = require('../common/api');
+var api = require('../../common/api');
 
 var LoginForm = React.createClass({
   getInitialState: function() {

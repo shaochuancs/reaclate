@@ -8,7 +8,10 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/my-account', function(req, res) {
-  res.render('pc/my-account');
+  res.render('pc/basic/my-account');
+});
+router.get('/my-account-flux', function(req, res) {
+  res.render('pc/flux/my-account');
 });
 
 module.exports = router;

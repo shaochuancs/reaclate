@@ -6,7 +6,7 @@
 
 var React = require('react');
 
-var SampleList = React.createClass({
+var ItemList = React.createClass({
   handleDeleteData: function(rowDataId) {
     this.props.handleDeleteData(rowDataId);
   },
@@ -28,7 +28,7 @@ var SampleList = React.createClass({
 
     return (
       <div>
-        <table className="table sample-list-table">
+        <table className="table item-list-table">
           <thead>
             <tr>
               <th>Column 1</th>
@@ -46,4 +46,4 @@ var SampleList = React.createClass({
   }
 });
 
-module.exports = SampleList;
+module.exports = ItemList;

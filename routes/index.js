@@ -11,7 +11,7 @@ var secure = require('./secure/index');
 var api = require('./api/api');
 
 router.get('/', function(req, res) {
-  res.render('pc/login');
+  res.render('pc/basic/login');
 });
 
 router.get('/404', function(req, res) {
@@ -19,7 +19,10 @@ router.get('/404', function(req, res) {
 });
 
 router.get('/login', function (req, res) {
-  res.render('pc/login');
+  res.render('pc/basic/login');
+});
+router.get('/login-flux', function(req, res) {
+  res.render('pc/flux/login');
 });
 
 router.use('/secure', secure);

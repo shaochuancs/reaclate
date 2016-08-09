@@ -9,7 +9,7 @@ const router = express.Router();
 
 var utils = require('../../../utils/utils');
 
-router.get('/sample-list', function(req, res) {
+router.get('/item-list', function(req, res) {
   res.json([{
     id: 42,
     col1: 'AAA',
@@ -33,7 +33,7 @@ router.get('/sample-list', function(req, res) {
   }]);
 });
 
-router.delete('/sample-list/:id', function(req, res) {
+router.delete('/item-list/:id', function(req, res) {
   res.status(200).end();
 });
 
