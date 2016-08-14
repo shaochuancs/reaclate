@@ -6,6 +6,8 @@
 
 const debugServer = require('debug')('reaclate:server');
 
+var WebComponents = require('../web/static/compiled/scripts/pc/isomorphic_components');
+
 const ENCODING_QUESTION_MARK = '__qm__';
 const ENCODING_EQUAL = '__eq__';
 const ENCODING_AND = '__and__';
@@ -22,4 +24,8 @@ exports.decodeURL = function(encodedUrl) {
   return encodedUrl.replace(new RegExp(ENCODING_QUESTION_MARK, 'g'), '?')
                     .replace(new RegExp(ENCODING_EQUAL, 'g'), '=')
                     .replace(new RegExp(ENCODING_AND, 'g'), '&');
+};
+
+exports.getWebComponents = function() {
+  return WebComponents;
 };

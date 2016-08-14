@@ -1,0 +1,10 @@
+{% extends "../layout.html" %}
+{% block title %}My account{% endblock %}
+{% block content %}
+
+<div class="container my-account-wrapper">
+  <div id="my-account-isomorphic">{{accountHTML|safe}}</div>
+  {{initScript|safe}}
+</div>
+{% include "../partial/footer.html" %}
+{% endblock %}

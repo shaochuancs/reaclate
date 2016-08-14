@@ -47,7 +47,7 @@ gulp.task('stylesheets', function(){
 
 // Scripts
 gulp.task('scripts', ['jshint'], function(){
-  gulp.start('pc_scripts');
+  gulp.start('pc_scripts', 'isomorphic_components');
 });
 
 gulp.task('jshint', function() {
@@ -65,6 +65,21 @@ gulp.task('pc_scripts', ['pc_lib'], function() {
     extensions: ['.jsx']
   }).bundle()
     .pipe(source('reaclate.js'))
+    .pipe(buffer())
+    .pipe(gulpif(isProdMode, uglify({
+      mangle: false
+    })))
+    .pipe(gulp.dest('./web/static/compiled/scripts/pc'));
+});
+
+gulp.task('isomorphic_components', function() {
+  return browserify({
+    entries: ['./web/components/pc/isomorphic/components.js'],
+    transform: [reactify],
+    extensions: ['.jsx'],
+    standalone: 'WebComponents'
+  }).bundle()
+    .pipe(source('isomorphic_components.js'))
     .pipe(buffer())
     .pipe(gulpif(isProdMode, uglify({
       mangle: false

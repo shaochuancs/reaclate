@@ -6,9 +6,14 @@
 
 var express = require('express');
 var router = express.Router();
+var React = require('react');
+var ReactDOMServer = require('react-dom/server');
 
 var secure = require('./secure/index');
 var api = require('./api/api');
+var utils = require('../utils/utils');
+
+var LoginFormFactory = React.createFactory(utils.getWebComponents().LoginFormIsomorphic);
 
 router.get('/', function(req, res) {
   res.render('pc/basic/login');
@@ -23,6 +28,12 @@ router.get('/login', function (req, res) {
 });
 router.get('/login-flux', function(req, res) {
   res.render('pc/flux/login');
+});
+
+router.get('/login-isomorphic', function(req, res) {
+  res.render('pc/isomorphic/login', {
+    formHTML: ReactDOMServer.renderToString(LoginFormFactory())
+  });
 });
 
 router.use('/secure', secure);
