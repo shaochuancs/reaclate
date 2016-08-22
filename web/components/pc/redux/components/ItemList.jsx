@@ -7,6 +7,9 @@
 var React = require('react');
 
 var ItemList = React.createClass({
+  componentDidMount: function() {
+    this.props.initList();
+  },
   handleDeleteData: function(rowDataId) {
     this.props.handleDeleteData(rowDataId);
   },

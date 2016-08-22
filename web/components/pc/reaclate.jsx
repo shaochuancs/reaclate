@@ -47,6 +47,16 @@ var myAccountReduxEle = document.getElementById('my-account-redux');
 if (loginFormReduxEle) {
   ReactDOM.render(<LoginFormRedux redirect-url="/secure/my-account-redux" />, loginFormReduxEle);
 }
+var Provider = require('react-redux').Provider;
+var createStore = require('redux').createStore;
+var myAccountReducer = require('./redux/reducer/MyAccountReducer');
+var myAccountStore = createStore(myAccountReducer);
+// Use below code if redux-devtool chrome extension is activated.
+// var myAccountStore = createStore(myAccountReducer, window.devToolsExtension && window.devToolsExtension());
 if (myAccountReduxEle) {
-  ReactDOM.render(<MyAccountRedux/>, myAccountReduxEle);
+  ReactDOM.render(
+    <Provider store={myAccountStore}>
+      <MyAccountRedux/>
+    </Provider>,
+    myAccountReduxEle);
 }
