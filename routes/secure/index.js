@@ -50,5 +50,8 @@ router.get('/my-account-isomorphic', function(req, res) {
     });
   }, 100);
 });
+router.get('/my-account-redux', function(req, res) {
+  res.render('pc/redux/my-account');
+});
 
 module.exports = router;

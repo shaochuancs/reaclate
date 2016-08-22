@@ -29,11 +29,13 @@ router.get('/login', function (req, res) {
 router.get('/login-flux', function(req, res) {
   res.render('pc/flux/login');
 });
-
 router.get('/login-isomorphic', function(req, res) {
   res.render('pc/isomorphic/login', {
     formHTML: ReactDOMServer.renderToString(LoginFormFactory())
   });
+});
+router.get('/login-redux', function(req, res) {
+  res.render('pc/redux/login');
 });
 
 router.use('/secure', secure);
