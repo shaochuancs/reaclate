@@ -10,6 +10,7 @@ const router = express.Router();
 var secureAPI = require('./secure/api');
 
 router.post('/login', function(req, res) {
+  res.cookie('token', 'sample_token', { maxAge: 900000 }); // simulate write-token if login success
   res.end();
 });
 

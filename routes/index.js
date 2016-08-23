@@ -38,6 +38,10 @@ router.get('/login-redux', function(req, res) {
   res.render('pc/redux/login');
 });
 
+router.get('/react-router-app*', function(req, res) {
+  res.render('pc/react-router/app');
+});
+
 router.use('/secure', secure);
 router.use('/api', api);
 

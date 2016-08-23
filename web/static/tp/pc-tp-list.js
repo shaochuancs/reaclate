@@ -7,7 +7,8 @@
 var commonTP = require('./common-tp-list');
 
 var pcTPLib = ['web/static/bower_components/jquery/dist/jquery.min.js',
-               'web/static/bower_components/bootstrap/dist/js/bootstrap.min.js'];
+               'web/static/bower_components/bootstrap/dist/js/bootstrap.min.js',
+               'web/static/bower_components/js-cookie/src/js.cookie.js'];
 
 var pcTPMap = ['web/static/bower_components/jquery/dist/jquery.min.map'];
 
