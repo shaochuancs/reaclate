@@ -41,7 +41,7 @@ router.get('/login-es6', function(req, res) {
   res.render('pc/es6/login');
 });
 
-router.get('/react-router-app*', function(req, res) {
+router.get('/react-router*', function(req, res) {
   res.render('pc/react-router/app');
 });
 

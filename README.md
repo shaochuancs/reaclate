@@ -39,7 +39,7 @@ With isomorphic server side rendering, visit: `http://localhost:3000/login-isomo
 
 With redux, visit: `http://localhost:3000/login-redux`
 
-With react-router, visit: `http://localhost:3000/react-router-app`
+With react-router, visit: `http://localhost:3000/react-router`
 
 With ES6, visit: `http://localhost:3000/login-es6`
 
