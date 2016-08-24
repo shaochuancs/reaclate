@@ -6,7 +6,7 @@
 
 import React from 'react';
 
-class ItemList extends React.component {
+class ItemList extends React.Component {
   handleDeleteData(rowDataId) {
     this.props.handleDeleteData(rowDataId);
   }

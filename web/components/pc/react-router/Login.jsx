@@ -24,7 +24,7 @@ var LoginForm = React.createClass({
     $(this.refs.submitButton).addClass('disabled');
 
     $.post(api.LOGIN, function() {
-      browserHistory.push('/react-router-app/my-account');
+      browserHistory.push('/react-router/my-account');
     });
   },
   render: function(){

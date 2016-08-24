@@ -70,16 +70,16 @@ var IndexRoute = ReactRouter.IndexRoute;
 var browserHistory = ReactRouter.browserHistory;
 var LoginReactRouter = require('./react-router/Login');
 var MyAccountReactRouter = require('./react-router/MyAccount');
-var reactRouterAppEle = document.getElementById('react-router-app');
+var reactRouterAppEle = document.getElementById('react-router');
 function requireAuth(nextState, replace) {
   if (!Cookies.get('token')) {
-    replace('/react-router-app/login');
+    replace('/react-router/login');
   }
 }
 if (reactRouterAppEle) {
   ReactDOM.render(
     <Router history={browserHistory}>
-      <Route path="/react-router-app">
+      <Route path="/react-router">
         <IndexRoute component={LoginReactRouter} />
         <Route path="login" component={LoginReactRouter} />
         <Route path="my-account" component={MyAccountReactRouter} onEnter={requireAuth} />

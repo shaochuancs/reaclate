@@ -9,7 +9,7 @@ import api from '../../common/api';
 
 import ItemList from './ItemList';
 
-class MyAccount extends React.component {
+class MyAccount extends React.Component {
   constructor(props) {
     super(props);
     this.state = {itemListData: []};
