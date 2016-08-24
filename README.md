@@ -27,11 +27,11 @@ Finally, run the project and you are good to go:
 npm start
 ```
 
-Launch your browser and visit: `http://localhost:3000/login`
+Launch your browser and visit: `http://localhost:3000/app`
 
 ## Usage
 
-Basic, visit: `http://localhost:3000/login`
+Basic react app, visit: `http://localhost:3000/login`
 
 With flux, visit: `http://localhost:3000/login-flux`
 
@@ -42,6 +42,8 @@ With redux, visit: `http://localhost:3000/login-redux`
 With react-router, visit: `http://localhost:3000/react-router`
 
 With ES6, visit: `http://localhost:3000/login-es6`
+
+With redux + react-router + isomorphic + ES6, visit: `http://localhost:3000/app`
 
 ## License
 

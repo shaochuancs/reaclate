@@ -20,6 +20,8 @@ const routes = require('./routes/index');
 
 const isProdMode = process.env.NODE_ENV === 'production';
 
+global.Cookies = null;
+
 var app = express();
 
 var nunjucksConf = {

@@ -7,6 +7,7 @@
 const debugServer = require('debug')('reaclate:server');
 
 var WebComponents = require('../web/static/compiled/scripts/pc/isomorphic_components');
+var AppComponents = require('../web/static/compiled/scripts/pc/app_components');
 
 const ENCODING_QUESTION_MARK = '__qm__';
 const ENCODING_EQUAL = '__eq__';
@@ -28,4 +29,8 @@ exports.decodeURL = function(encodedUrl) {
 
 exports.getWebComponents = function() {
   return WebComponents;
+};
+
+exports.getAppComponents = function() {
+  return AppComponents;
 };
