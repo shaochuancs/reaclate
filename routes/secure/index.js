@@ -53,5 +53,8 @@ router.get('/my-account-isomorphic', function(req, res) {
 router.get('/my-account-redux', function(req, res) {
   res.render('pc/redux/my-account');
 });
+router.get('/my-account-es6', function(req, res) {
+  res.render('pc/es6/my-account');
+});
 
 module.exports = router;

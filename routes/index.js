@@ -37,6 +37,9 @@ router.get('/login-isomorphic', function(req, res) {
 router.get('/login-redux', function(req, res) {
   res.render('pc/redux/login');
 });
+router.get('/login-es6', function(req, res) {
+  res.render('pc/es6/login');
+});
 
 router.get('/react-router-app*', function(req, res) {
   res.render('pc/react-router/app');

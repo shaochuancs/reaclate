@@ -19,7 +19,7 @@ const gulp = require('gulp'),
     mobileTPList = require('./web/static/tp/mobile-tp-list'),
     pcTPList = require('./web/static/tp/pc-tp-list'),
     config = require('./config/config'),
-    reactify = require('reactify');
+    babelify = require('babelify');
 
 const isProdMode = process.env.NODE_ENV === 'production';
 
@@ -51,7 +51,7 @@ gulp.task('scripts', ['jshint'], function(){
 });
 
 gulp.task('jshint', function() {
-  return gulp.src(['./web/components/**/*.jsx'])
+  return gulp.src(['./web/components/**/*.jsx', './web/components/**/*.js'])
     .pipe(jshint({linter: jsxhint}))
     .pipe(jshint.reporter('default'))
     .pipe(jshint.reporter('fail'));
@@ -61,7 +61,7 @@ gulp.task('jshint', function() {
 gulp.task('pc_scripts', ['pc_lib'], function() {
   return browserify({
     entries: ['./web/components/pc/reaclate.jsx'],
-    transform: [reactify],
+    transform: [babelify],
     extensions: ['.jsx']
   }).bundle()
     .pipe(source('reaclate.js'))
@@ -75,7 +75,7 @@ gulp.task('pc_scripts', ['pc_lib'], function() {
 gulp.task('isomorphic_components', function() {
   return browserify({
     entries: ['./web/components/pc/isomorphic/components.js'],
-    transform: [reactify],
+    transform: [babelify],
     extensions: ['.jsx'],
     standalone: 'WebComponents'
   }).bundle()

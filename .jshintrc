@@ -7,6 +7,7 @@
   "globalstrict": true,
   "-W041": false,
   "-W107": false,
+  "esversion": 6,
   "globals": {
     "describe": false,
     "it": false,
