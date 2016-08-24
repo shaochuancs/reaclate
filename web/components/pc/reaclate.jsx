@@ -2,6 +2,7 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
+require('babel-polyfill');
 
 // basic
 var LoginForm = require('./basic/LoginForm');
@@ -86,4 +87,16 @@ if (reactRouterAppEle) {
     </Router>,
     reactRouterAppEle
   );
+}
+
+// ES6
+import LoginFormES6 from './es6/LoginForm';
+import MyAccountES6 from './es6/MyAccount';
+let loginFormES6Ele = document.getElementById('login-form-es6');
+let myAccountES6Ele = document.getElementById('my-account-es6');
+if (loginFormES6Ele) {
+  ReactDOM.render(<LoginFormES6 redirect-url="/secure/my-account-es6" />, loginFormES6Ele);
+}
+if (myAccountES6Ele) {
+  ReactDOM.render(<MyAccountES6/>, myAccountES6Ele);
 }

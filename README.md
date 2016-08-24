@@ -1,5 +1,5 @@
 # reaclate ![Build Status](https://travis-ci.org/shaochuancs/reaclate.svg?branch=master)
-Boilerplate for web project - using React, Node.js, Express, Browserify and Gulp. Sample code on flux, isomorphic server side rendering, redux, and react-router.
+Boilerplate for web project - using React, Node.js, Express, Browserify, Babel and Gulp. Sample code on flux, isomorphic server side rendering, redux, react-router, and ES6.
 
 ## Get Started
 First, install bower and gulp globally, if you haven't done that yet:
@@ -40,6 +40,8 @@ With isomorphic server side rendering, visit: `http://localhost:3000/login-isomo
 With redux, visit: `http://localhost:3000/login-redux`
 
 With react-router, visit: `http://localhost:3000/react-router-app`
+
+With ES6, visit: `http://localhost:3000/login-es6`
 
 ## License
 
