@@ -4,7 +4,7 @@
 
 "use strict";
 
-var connect = require('react-redux').connect;
-var MyAccount = require('../components/MyAccount');
+import {connect} from 'react-redux';
+import MyAccount from '../components/MyAccount';
 
-module.exports = connect()(MyAccount);
+export default connect()(MyAccount);

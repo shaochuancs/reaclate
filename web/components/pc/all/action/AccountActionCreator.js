@@ -4,13 +4,11 @@
 
 "use strict";
 
-function login(email) {
+function loginAction(email) {
   return {
     type: 'login',
     email: email
   };
 }
 
-module.exports = {
-  login: login
-};
+export {loginAction};

@@ -4,16 +4,16 @@
 
 "use strict";
 
-var React = require('react');
+import React from 'react';
 
-var ItemList = React.createClass({
-  componentDidMount: function() {
+class ItemList extends React.Component {
+  componentDidMount() {
     this.props.initList();
-  },
-  handleDeleteData: function(rowDataId) {
+  }
+  handleDeleteData(rowDataId) {
     this.props.handleDeleteData(rowDataId);
-  },
-  render: function(){
+  }
+  render() {
     var rows = this.props.data.map(function(rowData, index) {
       return (
         <tr key={index}>
@@ -33,12 +33,12 @@ var ItemList = React.createClass({
       <div>
         <table className="table item-list-table">
           <thead>
-            <tr>
-              <th>Column 1</th>
-              <th>Column 2</th>
-              <th>Column 3</th>
-              <th></th>
-            </tr>
+          <tr>
+            <th>Column 1</th>
+            <th>Column 2</th>
+            <th>Column 3</th>
+            <th></th>
+          </tr>
           </thead>
           <tbody>
           {rows}
@@ -47,6 +47,6 @@ var ItemList = React.createClass({
       </div>
     );
   }
-});
+}
 
-module.exports = ItemList;
+export default ItemList;

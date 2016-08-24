@@ -1,21 +1,22 @@
 "use strict";
 
-var React = require('react');
+import React from 'react';
 
-var LoginForm = React.createClass({
-  getInitialState: function() {
-    return {email: '', password: ''};
-  },
-  handleEmailChange: function(e) {
+class LoginForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {email: '', password: ''};
+  }
+  handleEmailChange(e) {
     this.setState({email: e.target.value});
-  },
-  handlePasswordChange: function(e) {
+  }
+  handlePasswordChange(e) {
     this.setState({password: e.target.value});
-  },
-  handleSubmit: function(e) {
+  }
+  handleSubmit(e) {
     e.preventDefault();
-    var email = this.state.email.trim();
-    var password = this.state.password.trim();
+    let email = this.state.email.trim();
+    let password = this.state.password.trim();
     if (!email || !password) {
       return;
     }
@@ -25,21 +26,21 @@ var LoginForm = React.createClass({
       email: email,
       password: password
     });
-  },
-  render: function(){
+  }
+  render() {
     return (
       <div className="center-form-wrapper text-center">
         <div className="inline-block">
-          <form className="center-form" onSubmit={this.handleSubmit}>
+          <form className="center-form" onSubmit={(e) => this.handleSubmit(e)}>
             <h3 className="form-title">Reaclate</h3>
-            <input type="email" className="form-control" placeholder="Email" value={this.state.email} onChange={this.handleEmailChange} />
-            <input type="password" className="form-control" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange} />
+            <input type="email" className="form-control" placeholder="Email" value={this.state.email} onChange={(e) => this.handleEmailChange(e)} />
+            <input type="password" className="form-control" placeholder="Password" value={this.state.password} onChange={(e) => this.handlePasswordChange(e)} />
             <input ref="submitButton" type="submit" className="btn btn-primary btn-wide full-width" value="Login" />
           </form>
         </div>
       </div>
     );
   }
-});
+}
 
-module.exports = LoginForm;
+export default LoginForm;

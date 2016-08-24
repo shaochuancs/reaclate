@@ -4,39 +4,37 @@
 
 "use strict";
 
-var React = require('react');
-var ReactRouter = require('react-router');
-var Provider = require('react-redux').Provider;
-var createStore = require('redux').createStore;
-var Route = ReactRouter.Route;
-var IndexRoute = ReactRouter.IndexRoute;
-var RouterContext = ReactRouter.RouterContext;
+import React from 'react';
+import {Route, IndexRoute, RouterContext} from 'react-router';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
 
-var LoginApp = require('./container/Login');
-var MyAccountApp = require('./container/MyAccount');
+import LoginApp from './container/Login';
+import MyAccountApp from './container/MyAccount';
+import appReducer from './reducer/appReducer';
+
 function requireAppAuth(nextState, replace) {
   if (Cookies && !Cookies.get('token')) {
     replace('/app/login');
   }
 }
 
-var appReducer = require('./reducer/appReducer');
-var appStore = createStore(appReducer);
-module.exports = {
-  routes: (
-    <Route path="/app">
-      <IndexRoute component={LoginApp}/>
-      <Route path="login" component={LoginApp} />
-      <Route path="my-account" component={MyAccountApp} onEnter={requireAppAuth} />
-    </Route>
-  ),
-  ServerContext: React.createClass({
-    render: function() {
-      return (
-        <Provider store={appStore}>
-          <RouterContext {...this.props} />
-        </Provider>
-      );
-    }
-  })
-};
+let appStore = createStore(appReducer);
+let routes = (
+  <Route path="/app">
+    <IndexRoute component={LoginApp}/>
+    <Route path="login" component={LoginApp} />
+    <Route path="my-account" component={MyAccountApp} onEnter={requireAppAuth} />
+  </Route>
+);
+class ServerContext extends React.Component {
+  render() {
+    return (
+      <Provider store={appStore}>
+        <RouterContext {...this.props} />
+      </Provider>
+    );
+  }
+}
+
+export {routes, ServerContext};

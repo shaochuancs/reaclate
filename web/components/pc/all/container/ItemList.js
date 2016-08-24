@@ -4,10 +4,10 @@
 
 "use strict";
 
-var connect = require('react-redux').connect;
-var ItemActionCreator = require('../action/ItemActionCreator');
-var ItemList = require('../components/ItemList');
-var WebAPIUtils = require('../utils/WebAPIUtils');
+import {connect} from 'react-redux';
+import {listItemAction, deleteItemAction} from '../action/ItemActionCreator';
+import ItemList from '../components/ItemList';
+import {listItem, deleteItem} from '../utils/WebAPIUtils';
 
 function mapStateToProps(state) {
   return {
@@ -18,16 +18,16 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     initList: function() {
-      WebAPIUtils.listItem(function(data) {
-        dispatch(ItemActionCreator.listItem(data));
+      listItem(function(data) {
+        dispatch(listItemAction(data));
       });
     },
     handleDeleteData: function(id) {
-      WebAPIUtils.deleteItem(id, function(id) {
-        dispatch(ItemActionCreator.deleteItem(id));
+      deleteItem(id, function(id) {
+        dispatch(deleteItemAction(id));
       });
     }
   };
 }
 
-module.exports = connect(mapStateToProps, mapDispatchToProps)(ItemList);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemList);
