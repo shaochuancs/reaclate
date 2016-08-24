@@ -8,6 +8,8 @@ var express = require('express');
 var router = express.Router();
 var React = require('react');
 var ReactDOMServer = require('react-dom/server');
+var ReactRouter = require('react-router');
+var match = ReactRouter.match;
 
 var secure = require('./secure/index');
 var api = require('./api/api');
@@ -43,6 +45,17 @@ router.get('/login-es6', function(req, res) {
 
 router.get('/react-router*', function(req, res) {
   res.render('pc/react-router/app');
+});
+
+var routes = utils.getAppComponents().routes;
+var ServerContext = utils.getAppComponents().ServerContext;
+var serverContextFactory = React.createFactory(ServerContext);
+router.get('/app*', function(req, res) {
+  match({routes: routes, location: req.url}, function(err, redirect, props) {
+    res.render('pc/all/app', {
+      appHTML: ReactDOMServer.renderToString(serverContextFactory(props))
+    });
+  });
 });
 
 router.use('/secure', secure);

@@ -2,6 +2,13 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
+var Provider = require('react-redux').Provider;
+var createStore = require('redux').createStore;
+var ReactRouter = require('react-router');
+var Router = ReactRouter.Router;
+var Route = ReactRouter.Route;
+var IndexRoute = ReactRouter.IndexRoute;
+var browserHistory = ReactRouter.browserHistory;
 require('babel-polyfill');
 
 // basic
@@ -48,8 +55,6 @@ var myAccountReduxEle = document.getElementById('my-account-redux');
 if (loginFormReduxEle) {
   ReactDOM.render(<LoginFormRedux redirect-url="/secure/my-account-redux" />, loginFormReduxEle);
 }
-var Provider = require('react-redux').Provider;
-var createStore = require('redux').createStore;
 var myAccountReducer = require('./redux/reducer/MyAccountReducer');
 var myAccountStore = createStore(myAccountReducer);
 // Use below code if redux-devtool chrome extension is activated.
@@ -63,16 +68,11 @@ if (myAccountReduxEle) {
 }
 
 // react-router
-var ReactRouter = require('react-router');
-var Router = ReactRouter.Router;
-var Route = ReactRouter.Route;
-var IndexRoute = ReactRouter.IndexRoute;
-var browserHistory = ReactRouter.browserHistory;
 var LoginReactRouter = require('./react-router/Login');
 var MyAccountReactRouter = require('./react-router/MyAccount');
 var reactRouterAppEle = document.getElementById('react-router');
 function requireAuth(nextState, replace) {
-  if (!Cookies.get('token')) {
+  if (Cookies && !Cookies.get('token')) {
     replace('/react-router/login');
   }
 }
@@ -99,4 +99,20 @@ if (loginFormES6Ele) {
 }
 if (myAccountES6Ele) {
   ReactDOM.render(<MyAccountES6/>, myAccountES6Ele);
+}
+
+// App using redux, react-router, isomorphic and ES6
+var appEle = document.getElementById('app');
+var appReducer = require('./all/reducer/appReducer');
+var appStore = createStore(appReducer);
+// Use below code if redux-devtool chrome extension is activated.
+// var appStore = createStore(appReducer, window.devToolsExtension && window.devToolsExtension());
+var routes = require('./all/routes').routes;
+if (appEle) {
+  ReactDOM.render(
+    <Provider store={appStore}>
+      <Router routes={routes} history={browserHistory}>
+      </Router>
+    </Provider>,
+    appEle);
 }
