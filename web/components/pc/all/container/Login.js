@@ -4,21 +4,21 @@
 
 "use strict";
 
-var connect = require('react-redux').connect;
-var browserHistory = require('react-router').browserHistory;
-var AccountActionCreator = require('../action/AccountActionCreator');
-var Login = require('../components/Login');
-var WebAPIUtils = require('../utils/WebAPIUtils');
+import {connect} from 'react-redux';
+import {browserHistory} from 'react-router';
+import {loginAction} from '../action/AccountActionCreator';
+import Login from '../components/Login';
+import {login} from '../utils/WebAPIUtils';
 
 function mapDispatchToProps(dispatch) {
   return {
     login: function(param) {
-      WebAPIUtils.login(param, function() {
-        dispatch(AccountActionCreator.login(param.email));
+      login(param, function() {
+        dispatch(loginAction(param.email));
         browserHistory.push('/app/my-account');
       });
     }
   };
 }
 
-module.exports = connect(null, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);

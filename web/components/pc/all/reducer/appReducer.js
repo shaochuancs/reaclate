@@ -4,9 +4,9 @@
 
 "use strict";
 
-var combineReducers = require('redux').combineReducers;
+import {combineReducers} from 'redux';
 
-var email = require('./emailReducer');
-var items = require('./itemsReducer');
+import email from './emailReducer';
+import items from './itemsReducer';
 
 module.exports = combineReducers({email, items});

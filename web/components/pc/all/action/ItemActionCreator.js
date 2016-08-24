@@ -4,21 +4,18 @@
 
 "use strict";
 
-function listItem(items) {
+function listItemAction(items) {
   return {
     type: 'list_item',
     items: items
   };
 }
 
-function deleteItem(id) {
+function deleteItemAction(id) {
   return {
     type: 'delete_item',
     id: id
   };
 }
 
-module.exports = {
-  listItem: listItem,
-  deleteItem: deleteItem
-};
+export {listItemAction, deleteItemAction};

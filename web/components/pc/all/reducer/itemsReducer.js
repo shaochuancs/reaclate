@@ -17,7 +17,7 @@ function itemsReducer(state = [], action) {
 
 function getItemsAfterDelete(list, deleteId) {
   var newItems = [];
-  for (var i=0; i<list.length; i++) {
+  for (let i=0; i<list.length; i++) {
     if (list[i].id !== deleteId) {
       newItems.push(list[i]);
     }
@@ -25,4 +25,4 @@ function getItemsAfterDelete(list, deleteId) {
   return newItems;
 }
 
-module.exports = itemsReducer;
+export default itemsReducer;

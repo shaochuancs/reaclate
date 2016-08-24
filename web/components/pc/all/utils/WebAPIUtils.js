@@ -4,30 +4,20 @@
 
 "use strict";
 
-var api = require('../../../common/api');
+import api from '../../../common/api';
 
 function listItem(callback) {
-  $.get(api.ITEM_LIST, function(data) {
-    callback(data);
-  });
+  $.get(api.ITEM_LIST, (data) => callback(data));
 }
 
 function deleteItem(id, callback) {
   $.ajax(api.ITEM_LIST+'/'+id, {
     method: 'DELETE'
-  }).done(function() {
-    callback(id);
-  });
+  }).done(() => callback(id));
 }
 
 function login(param, callback) {
-  $.post(api.LOGIN, param, function() {
-    callback();
-  });
+  $.post(api.LOGIN, param, () => callback());
 }
 
-module.exports = {
-  listItem: listItem,
-  deleteItem: deleteItem,
-  login: login
-};
+export {listItem, deleteItem, login};

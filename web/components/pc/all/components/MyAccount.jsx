@@ -4,12 +4,12 @@
 
 "use strict";
 
-var React = require('react');
+import React from 'react';
 
-var ItemList = require('../container/ItemList');
+import ItemList from '../container/ItemList';
 
-var MyAccount = React.createClass({
-  render: function(){
+class MyAccount extends React.Component {
+  render() {
     return (
       <div className="container my-account-wrapper">
         <div>
@@ -19,6 +19,6 @@ var MyAccount = React.createClass({
       </div>
     );
   }
-});
+}
 
-module.exports = MyAccount;
+export default MyAccount;

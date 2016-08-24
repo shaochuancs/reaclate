@@ -13,4 +13,4 @@ function emailReducer(state = null, action) {
   }
 }
 
-module.exports = emailReducer;
+export default emailReducer;
