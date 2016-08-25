@@ -19,6 +19,9 @@ const gulp = require('gulp'),
     mobileTPList = require('./web/static/tp/mobile-tp-list'),
     pcTPList = require('./web/static/tp/pc-tp-list'),
     config = require('./config/config'),
+    jest = require('jest-cli'),
+    chalk = require('chalk'),
+    runSequence = require('run-sequence'),
     babelify = require('babelify');
 
 const isProdMode = process.env.NODE_ENV === 'production';
@@ -43,11 +46,6 @@ gulp.task('stylesheets', function(){
     .pipe(autoprefixer({browsers: ['> 1% in CN'], cascade: false}))
     .pipe(gulpif(isProdMode, cleanCSS()))
     .pipe(gulp.dest('web/static/compiled/stylesheets'));
-});
-
-// Scripts
-gulp.task('scripts', ['jshint'], function(){
-  gulp.start('pc_scripts', 'isomorphic_components', 'app_components');
 });
 
 gulp.task('jshint', function() {
@@ -122,6 +120,16 @@ gulp.task('pc_lib_map', function(){
   }
 });
 
+gulp.task('test', function(callback) {
+  jest.runCLI({}, __dirname, function(result) {
+    if (!result) {
+      console.log(chalk.bgRed('FAIL Jest tests failed!'));
+      return process.exit(1);
+    }
+    callback();
+  });
+});
+
 // Clean
 gulp.task('clean', function(cb) {
   del(['web/static/compiled/views', 'web/static/compiled/stylesheets', 'web/static/compiled/scripts']).then(function(){
@@ -136,7 +144,9 @@ gulp.task('default', ['clean'], function() {
     var constants = content + 'exports.API_X = "' + obj.API_X + '"';
     fs.writeFileSync('config/constants.js', constants);
 
-    gulp.start('views', 'stylesheets', 'scripts');
+    runSequence(['views', 'stylesheets', 'jshint'], ['pc_scripts', 'isomorphic_components', 'app_components'], function() {
+      gulp.start('test');
+    });
   });
 });
 

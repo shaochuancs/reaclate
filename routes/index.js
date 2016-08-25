@@ -15,8 +15,6 @@ var secure = require('./secure/index');
 var api = require('./api/api');
 var utils = require('../utils/utils');
 
-var LoginFormFactory = React.createFactory(utils.getWebComponents().LoginFormIsomorphic);
-
 router.get('/', function(req, res) {
   res.render('pc/basic/login');
 });
@@ -31,6 +29,8 @@ router.get('/login', function (req, res) {
 router.get('/login-flux', function(req, res) {
   res.render('pc/flux/login');
 });
+
+var LoginFormFactory = React.createFactory(utils.getWebComponents().LoginFormIsomorphic);
 router.get('/login-isomorphic', function(req, res) {
   res.render('pc/isomorphic/login', {
     formHTML: ReactDOMServer.renderToString(LoginFormFactory())

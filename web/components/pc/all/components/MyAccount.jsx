@@ -12,10 +12,8 @@ class MyAccount extends React.Component {
   render() {
     return (
       <div className="container my-account-wrapper">
-        <div>
-          <h3>Item list</h3>
-          <ItemList/>
-        </div>
+        <h3>Item list</h3>
+        <ItemList/>
       </div>
     );
   }

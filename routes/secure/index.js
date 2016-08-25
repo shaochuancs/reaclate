@@ -10,14 +10,14 @@ var React = require('react');
 var ReactDOMServer = require('react-dom/server');
 var utils = require('../../utils/utils');
 
-var MyAccountFactory = React.createFactory(utils.getWebComponents().MyAccountIsomorphic);
-
 router.get('/my-account', function(req, res) {
   res.render('pc/basic/my-account');
 });
 router.get('/my-account-flux', function(req, res) {
   res.render('pc/flux/my-account');
 });
+
+var MyAccountFactory = React.createFactory(utils.getWebComponents().MyAccountIsomorphic);
 router.get('/my-account-isomorphic', function(req, res) {
   //Simulate data achievement
   setTimeout(function() {

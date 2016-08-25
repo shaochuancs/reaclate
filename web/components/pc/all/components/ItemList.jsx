@@ -8,7 +8,9 @@ import React from 'react';
 
 class ItemList extends React.Component {
   componentDidMount() {
-    this.props.initList();
+    if (this.props.initList) {
+      this.props.initList();
+    }
   }
   handleDeleteData(rowDataId) {
     this.props.handleDeleteData(rowDataId);
