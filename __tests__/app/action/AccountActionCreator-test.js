@@ -4,19 +4,17 @@
 
 "use strict";
 
-var relativeToRoot = '../../../';
-var actionCreator_file = relativeToRoot + require(relativeToRoot + 'tests').app_path + '/action/AccountActionCreator';
+const relativeToRoot = '../../../';
+const actionCreator_file = relativeToRoot + require(relativeToRoot + 'tests').app_path + '/action/AccountActionCreator';
 
-jest.dontMock(actionCreator_file);
+const AccountActionCreator = require(actionCreator_file);
 
-var AccountActionCreator = require(actionCreator_file);
+describe('Test account actions', () => {
+  test('test login action', () => {
+    const sampleEmail = 'test@gmail.com';
+    const action = AccountActionCreator.loginAction(sampleEmail);
 
-describe('Test account actions', function() {
-  it('test login action', function() {
-    var sampleEmail = 'test@gmail.com';
-    var action = AccountActionCreator.loginAction(sampleEmail);
-
-    expect(action.type).toEqual('login');
-    expect(action.email).toEqual(sampleEmail);
+    expect(action.type).toBe('login');
+    expect(action.email).toBe(sampleEmail);
   });
 });

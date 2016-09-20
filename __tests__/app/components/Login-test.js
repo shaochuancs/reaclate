@@ -4,23 +4,21 @@
 
 "use strict";
 
-var React = require('react');
-var ReactDOM = require('react-dom');
-var TestUtils = require('react-addons-test-utils');
+const React = require('react');
+const ReactDOM = require('react-dom');
+const TestUtils = require('react-addons-test-utils');
 
-var relativeToRoot = '../../../';
-var component_file = relativeToRoot + require(relativeToRoot + 'tests').app_path + '/components/Login.jsx';
+const relativeToRoot = '../../../';
+const component_file = relativeToRoot + require(relativeToRoot + 'tests').app_path + '/components/Login.jsx';
 
-jest.dontMock(component_file);
+const Login = require(component_file).default;
 
-var Login = require(component_file).default;
-
-describe('Test Login component', function() {
-  it('test login form', function() {
-    var dom = TestUtils.renderIntoDocument(
+describe('Test Login component', () => {
+  test('test login form', () => {
+    const dom = TestUtils.renderIntoDocument(
       <Login />
     );
-    var formDOM = TestUtils.findRenderedDOMComponentWithTag(dom, 'form');
-    expect(formDOM.childNodes.length).toEqual(4);
+    const formDOM = TestUtils.findRenderedDOMComponentWithTag(dom, 'form');
+    expect(formDOM.childNodes.length).toBe(4);
   });
 });

@@ -4,27 +4,25 @@
 
 "use strict";
 
-var relativeToRoot = '../../../';
-var actionCreator_file = relativeToRoot + require(relativeToRoot + 'tests').app_path + '/action/ItemActionCreator';
+const relativeToRoot = '../../../';
+const actionCreator_file = relativeToRoot + require(relativeToRoot + 'tests').app_path + '/action/ItemActionCreator';
 
-jest.dontMock(actionCreator_file);
+const ItemActionCreator = require(actionCreator_file);
 
-var ItemActionCreator = require(actionCreator_file);
+describe('Test item actions', () => {
+  test('test list item action', () => {
+    const sampleItems = [42, 88];
+    const action = ItemActionCreator.listItemAction(sampleItems);
 
-describe('Test item actions', function() {
-  it('test list item action', function() {
-    var sampleItems = [42, 88];
-    var action = ItemActionCreator.listItemAction(sampleItems);
-
-    expect(action.type).toEqual('list_item');
-    expect(action.items).toEqual(sampleItems);
+    expect(action.type).toBe('list_item');
+    expect(action.items).toBe(sampleItems);
   });
 
-  it('test delete item action', function() {
-    var sampleId = 29;
-    var action = ItemActionCreator.deleteItemAction(sampleId);
+  test('test delete item action', () => {
+    const sampleId = 29;
+    const action = ItemActionCreator.deleteItemAction(sampleId);
 
-    expect(action.type).toEqual('delete_item');
-    expect(action.id).toEqual(sampleId);
+    expect(action.type).toBe('delete_item');
+    expect(action.id).toBe(sampleId);
   });
 });
