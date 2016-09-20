@@ -4,20 +4,18 @@
 
 "use strict";
 
-var React = require('react');
-var ReactDOM = require('react-dom');
-var TestUtils = require('react-addons-test-utils');
+const React = require('react');
+const ReactDOM = require('react-dom');
+const TestUtils = require('react-addons-test-utils');
 
-var relativeToRoot = '../../../';
-var component_file = relativeToRoot + require(relativeToRoot + 'tests').app_path + '/components/ItemList.jsx';
+const relativeToRoot = '../../../';
+const component_file = relativeToRoot + require(relativeToRoot + 'tests').app_path + '/components/ItemList.jsx';
 
-jest.dontMock(component_file);
+const ItemList = require(component_file).default;
 
-var ItemList = require(component_file).default;
-
-describe('Test ItemList component', function() {
-  it('test item table rows', function() {
-    var testData = [{
+describe('Test ItemList component', () => {
+  test('test item table rows', () => {
+    const testData = [{
       id: 12,
       col1: '1AAA',
       col2: '1BBB',
@@ -38,10 +36,10 @@ describe('Test ItemList component', function() {
       col2: '1HHH',
       col3: '1III'
     }];
-    var dom = TestUtils.renderIntoDocument(
+    const dom = TestUtils.renderIntoDocument(
       <ItemList data={testData} />
     );
-    var tbodyDOM = TestUtils.findRenderedDOMComponentWithTag(dom, 'tbody');
-    expect(tbodyDOM.childNodes.length).toEqual(4);
+    const tbodyDOM = TestUtils.findRenderedDOMComponentWithTag(dom, 'tbody');
+    expect(tbodyDOM.childNodes.length).toBe(4);
   });
 });

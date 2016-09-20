@@ -4,16 +4,14 @@
 
 "use strict";
 
-var relativeToRoot = '../../../';
-var reducer_file = relativeToRoot + require(relativeToRoot + 'tests').app_path + '/reducer/emailReducer';
+const relativeToRoot = '../../../';
+const reducer_file = relativeToRoot + require(relativeToRoot + 'tests').app_path + '/reducer/emailReducer';
 
-jest.dontMock(reducer_file);
+const reducer = require(reducer_file).default;
 
-var reducer = require(reducer_file).default;
-
-describe('Test email reducer', function() {
-  it('test reducer on login action', function() {
-    var reduceResult = reducer('origin@gmail.com', {type: 'login', email: 'test@gmail.com'});
-    expect(reduceResult).toEqual('test@gmail.com');
+describe('Test email reducer', () => {
+  test('test reducer on login action', () => {
+    const reduceResult = reducer('origin@gmail.com', {type: 'login', email: 'test@gmail.com'});
+    expect(reduceResult).toBe('test@gmail.com');
   });
 });

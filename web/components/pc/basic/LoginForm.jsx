@@ -27,6 +27,13 @@ var LoginForm = React.createClass({
     }.bind(this));
   },
   render: function(){
+    fetch('http://notsfcshaoshaochuancs.com/api/testxxx').then(function(res){
+      console.log('----success----');
+      console.log(res);
+    }, function(err){
+      console.log('----fail----');
+      console.log(err);
+    });
     return (
       <form className="center-form" onSubmit={this.handleSubmit}>
         <h3 className="form-title">Reaclate</h3>

@@ -4,37 +4,35 @@
 
 "use strict";
 
-var relativeToRoot = '../../';
-var utils_file = relativeToRoot + require(relativeToRoot + 'tests').utils_path + '/utils';
+const relativeToRoot = '../../';
+const utils_file = relativeToRoot + require(relativeToRoot + 'tests').utils_path + '/utils';
 
-jest.dontMock(utils_file);
+const utils = require(utils_file);
 
-var utils = require(utils_file);
-
-describe('Test URL utils', function() {
-  it('test encodeURL', function() {
-    var srcURL = 'http://example.com/test?a=42&b=88';
-    var expectedVal = 'http://example.com/test__qm__a__eq__42__and__b__eq__88';
-    var actualVal = utils.encodeURL(srcURL);
-    expect(actualVal).toEqual(expectedVal);
+describe('Test URL utils', () => {
+  test('test encodeURL', () => {
+    const srcURL = 'http://example.com/test?a=42&b=88';
+    const expectedVal = 'http://example.com/test__qm__a__eq__42__and__b__eq__88';
+    const actualVal = utils.encodeURL(srcURL);
+    expect(actualVal).toBe(expectedVal);
   });
 
-  it('test decodeURL', function() {
-    var srcURL = 'http://example.com/test__qm__a__eq__42__and__b__eq__88';
-    var expectedVal = 'http://example.com/test?a=42&b=88';
-    var actualVal = utils.decodeURL(srcURL);
-    expect(actualVal).toEqual(expectedVal);
+  test('test decodeURL', () => {
+    const srcURL = 'http://example.com/test__qm__a__eq__42__and__b__eq__88';
+    const expectedVal = 'http://example.com/test?a=42&b=88';
+    const actualVal = utils.decodeURL(srcURL);
+    expect(actualVal).toBe(expectedVal);
   });
 });
 
-describe('Test AppComponents', function() {
-  var AppComponents = utils.getAppComponents();
+describe('Test AppComponents', () => {
+  const AppComponents = utils.getAppComponents();
 
-  it('test routes', function() {
-    var displayName = AppComponents.routes.type.displayName;
-    var path = AppComponents.routes.props.path;
+  test('test routes', function() {
+    const displayName = AppComponents.routes.type.displayName;
+    const path = AppComponents.routes.props.path;
 
-    expect(displayName).toEqual('Route');
-    expect(path).toEqual('/app');
+    expect(displayName).toBe('Route');
+    expect(path).toBe('/app');
   });
 });
