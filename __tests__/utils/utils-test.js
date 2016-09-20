@@ -36,3 +36,62 @@ describe('Test AppComponents', () => {
     expect(path).toBe('/app');
   });
 });
+
+describe('Test port normalizer', () => {
+  test('Test named pipe', () => {
+    const pipeName = 'xPipe';
+    const expectedPort = 'xPipe';
+    expect(utils.normalizePort(pipeName)).toBe(expectedPort);
+  });
+  test('Test port number string', () => {
+    const portString = '3000';
+    const expectedPort = 3000;
+    expect(utils.normalizePort(portString)).toBe(expectedPort);
+  });
+  test('Test port number', () => {
+    const portNum = 3000;
+    const expectedPort = 3000;
+    expect(utils.normalizePort(portNum)).toBe(expectedPort);
+  });
+  test('Test invalid port number', () => {
+    const invalidPortNum = -42;
+    const expectedResult = false;
+    expect(utils.normalizePort(invalidPortNum)).toBe(expectedResult);
+  });
+});
+
+describe('Test error handler', () => {
+  const sampleNonListenError = new Error('sample non-listen error');
+  const sampleEACCESError = new Error('sample EACCES error');
+  sampleEACCESError.syscall = 'listen';
+  sampleEACCESError.code = 'EACCES';
+  const sampleEADDRINUSEError = new Error('sample EADDRINUSE error');
+  sampleEADDRINUSEError.syscall = 'listen';
+  sampleEADDRINUSEError.code = 'EADDRINUSE';
+  const sampleListenError = new Error('sample listen error');
+  sampleListenError.syscall = 'listen';
+  test('Test non-listen error', () => {
+    expect(function(){utils.handleError(sampleNonListenError, 3000, new Function());}).toThrowError('sample non-listen error');
+  });
+  test('Test EACCES error', () => {
+    utils.handleError(sampleEACCESError, 3000, (message, isExitProcess) => {
+      expect(message).toBe('Port 3000 requires elevated privileges');
+      expect(isExitProcess).toBe(true);
+    });
+  });
+  test('Test EACCES error on pipe', () => {
+    utils.handleError(sampleEACCESError, 'samplePipe', (message, isExitProcess) => {
+      expect(message).toBe('Pipe samplePipe requires elevated privileges');
+      expect(isExitProcess).toBe(true);
+    });
+  });
+  test('Test EADDRINUSE error', () => {
+    utils.handleError(sampleEADDRINUSEError, 3000, (message, isExitProcess) => {
+      expect(message).toBe('Port 3000 is already in use');
+      expect(isExitProcess).toBe(true);
+    });
+  });
+  test('Test plain listen error', () => {
+    expect(function(){utils.handleError(sampleListenError, 3000, new Function())}).toThrowError('sample listen error');
+  });
+});

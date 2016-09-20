@@ -6,5 +6,6 @@
 
 module.exports = {
   app_path: 'web/components/pc/all',
+  config_path: 'config',
   utils_path: 'utils'
 };
