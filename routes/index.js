@@ -61,12 +61,4 @@ router.get('/app*', function(req, res) {
 router.use('/secure', secure);
 router.use('/api', api);
 
-router.post('/test', function(req, res) {
-  console.log('-=-=-=-=');
-  console.log(req.body);
-  res.json({
-    result: 'OK2'
-  });
-});
-
 module.exports = router;

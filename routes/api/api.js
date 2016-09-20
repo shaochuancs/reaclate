@@ -14,10 +14,6 @@ router.post('/login', function(req, res) {
   res.end();
 });
 
-router.get('/test', function(req, res) {
-  res.json({name: 'test'});
-});
-
 router.use('/secure', secureAPI);
 
 module.exports = router;
