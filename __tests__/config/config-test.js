@@ -10,10 +10,9 @@ const config_file = relativeToRoot + require(relativeToRoot + 'tests').config_pa
 const config = require(config_file);
 
 describe('Test load config file', () => {
-  test('Test load', (done) => {
+  it('should load API info', () => {
     config.load((obj) => {
       expect(obj.API_X).toBeTruthy();
-      done();
     });
   });
 });

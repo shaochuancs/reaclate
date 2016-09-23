@@ -10,7 +10,7 @@ const actionCreator_file = relativeToRoot + require(relativeToRoot + 'tests').ap
 const AccountActionCreator = require(actionCreator_file);
 
 describe('Test account actions', () => {
-  test('test login action', () => {
+  it('should create correct login action', () => {
     const sampleEmail = 'test@gmail.com';
     const action = AccountActionCreator.loginAction(sampleEmail);
 

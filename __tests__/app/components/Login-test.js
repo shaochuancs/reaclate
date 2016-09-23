@@ -14,7 +14,7 @@ const component_file = relativeToRoot + require(relativeToRoot + 'tests').app_pa
 const Login = require(component_file).default;
 
 describe('Test Login component', () => {
-  test('test login form', () => {
+  it('should render login form correctly', () => {
     const dom = TestUtils.renderIntoDocument(
       <Login />
     );

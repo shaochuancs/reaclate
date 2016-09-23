@@ -10,7 +10,7 @@ const reducer_file = relativeToRoot + require(relativeToRoot + 'tests').app_path
 const reducer = require(reducer_file).default;
 
 describe('Test email reducer', () => {
-  test('test reducer on login action', () => {
+  it('should return correct email on login action', () => {
     const reduceResult = reducer('origin@gmail.com', {type: 'login', email: 'test@gmail.com'});
     expect(reduceResult).toBe('test@gmail.com');
   });

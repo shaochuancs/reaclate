@@ -14,7 +14,7 @@ const component_file = relativeToRoot + require(relativeToRoot + 'tests').app_pa
 const ItemList = require(component_file).default;
 
 describe('Test ItemList component', () => {
-  test('test item table rows', () => {
+  it('should render item table rows correctly', () => {
     const testData = [{
       id: 12,
       col1: '1AAA',
