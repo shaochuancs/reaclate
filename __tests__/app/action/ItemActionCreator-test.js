@@ -10,7 +10,7 @@ const actionCreator_file = relativeToRoot + require(relativeToRoot + 'tests').ap
 const ItemActionCreator = require(actionCreator_file);
 
 describe('Test item actions', () => {
-  test('test list item action', () => {
+  it('should create correct list item action', () => {
     const sampleItems = [42, 88];
     const action = ItemActionCreator.listItemAction(sampleItems);
 
@@ -18,7 +18,7 @@ describe('Test item actions', () => {
     expect(action.items).toBe(sampleItems);
   });
 
-  test('test delete item action', () => {
+  it('should create correct delete item action', () => {
     const sampleId = 29;
     const action = ItemActionCreator.deleteItemAction(sampleId);
 

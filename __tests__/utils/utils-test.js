@@ -10,14 +10,14 @@ const utils_file = relativeToRoot + require(relativeToRoot + 'tests').utils_path
 const utils = require(utils_file);
 
 describe('Test URL utils', () => {
-  test('test encodeURL', () => {
+  it('should encode URL correctly', () => {
     const srcURL = 'http://example.com/test?a=42&b=88';
     const expectedVal = 'http://example.com/test__qm__a__eq__42__and__b__eq__88';
     const actualVal = utils.encodeURL(srcURL);
     expect(actualVal).toBe(expectedVal);
   });
 
-  test('test decodeURL', () => {
+  it('should decode URL correctly', () => {
     const srcURL = 'http://example.com/test__qm__a__eq__42__and__b__eq__88';
     const expectedVal = 'http://example.com/test?a=42&b=88';
     const actualVal = utils.decodeURL(srcURL);
@@ -28,7 +28,7 @@ describe('Test URL utils', () => {
 describe('Test AppComponents', () => {
   const AppComponents = utils.getAppComponents();
 
-  test('test routes', function() {
+  it('should return correct name and routes', function() {
     const displayName = AppComponents.routes.type.displayName;
     const path = AppComponents.routes.props.path;
 
@@ -38,22 +38,22 @@ describe('Test AppComponents', () => {
 });
 
 describe('Test port normalizer', () => {
-  test('Test named pipe', () => {
+  it('should normalize piped name', () => {
     const pipeName = 'xPipe';
     const expectedPort = 'xPipe';
     expect(utils.normalizePort(pipeName)).toBe(expectedPort);
   });
-  test('Test port number string', () => {
+  it('should normalize port number string', () => {
     const portString = '3000';
     const expectedPort = 3000;
     expect(utils.normalizePort(portString)).toBe(expectedPort);
   });
-  test('Test port number', () => {
+  it('should normalize port number', () => {
     const portNum = 3000;
     const expectedPort = 3000;
     expect(utils.normalizePort(portNum)).toBe(expectedPort);
   });
-  test('Test invalid port number', () => {
+  it('should return false for invalid port number', () => {
     const invalidPortNum = -42;
     const expectedResult = false;
     expect(utils.normalizePort(invalidPortNum)).toBe(expectedResult);
@@ -70,28 +70,28 @@ describe('Test error handler', () => {
   sampleEADDRINUSEError.code = 'EADDRINUSE';
   const sampleListenError = new Error('sample listen error');
   sampleListenError.syscall = 'listen';
-  test('Test non-listen error', () => {
+  it('should handle non-listen error', () => {
     expect(function(){utils.handleError(sampleNonListenError, 3000, new Function());}).toThrowError('sample non-listen error');
   });
-  test('Test EACCES error', () => {
+  it('should handle EACCES error on port', () => {
     utils.handleError(sampleEACCESError, 3000, (message, isExitProcess) => {
       expect(message).toBe('Port 3000 requires elevated privileges');
       expect(isExitProcess).toBe(true);
     });
   });
-  test('Test EACCES error on pipe', () => {
+  it('should handle EACCES error on pipe', () => {
     utils.handleError(sampleEACCESError, 'samplePipe', (message, isExitProcess) => {
       expect(message).toBe('Pipe samplePipe requires elevated privileges');
       expect(isExitProcess).toBe(true);
     });
   });
-  test('Test EADDRINUSE error', () => {
+  it('should handle EADDRINUSE error', () => {
     utils.handleError(sampleEADDRINUSEError, 3000, (message, isExitProcess) => {
       expect(message).toBe('Port 3000 is already in use');
       expect(isExitProcess).toBe(true);
     });
   });
-  test('Test plain listen error', () => {
+  it('should handle plain listen error', () => {
     expect(function(){utils.handleError(sampleListenError, 3000, new Function())}).toThrowError('sample listen error');
   });
 });
