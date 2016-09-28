@@ -44,8 +44,8 @@ var handleError = function(isDev, err, req, res) {
   });
 };
 exports.devErrorHandler = function(err, req, res, next) {
-  handleError(true, err, req, res, next);
+  handleError(true, err, req, res);
 };
 exports.prodErrorHandler = function(err, req, res, next) {
-  handleError(false, err, req, res, next);
+  handleError(false, err, req, res);
 };
