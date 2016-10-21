@@ -2,7 +2,7 @@
  * Created by cshao on 8/9/16.
  */
 
-"use strict";
+'use strict';
 
 var api = require('../../../common/api');
 

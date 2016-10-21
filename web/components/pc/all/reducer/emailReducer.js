@@ -2,7 +2,7 @@
  * Created by cshao on 8/24/16.
  */
 
-"use strict";
+'use strict';
 
 function emailReducer(state = null, action) {
   switch (action.type) {

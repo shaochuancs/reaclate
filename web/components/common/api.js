@@ -2,7 +2,7 @@
  * Created by cshao on 1/12/16.
  */
 
-"use strict";
+'use strict';
 
 var API_ENDPOINT = '/api';
 

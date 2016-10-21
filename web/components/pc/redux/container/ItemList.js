@@ -2,7 +2,7 @@
  * Created by cshao on 8/22/16.
  */
 
-"use strict";
+'use strict';
 
 var connect = require('react-redux').connect;
 var ItemActionCreator = require('../action/ItemActionCreator');

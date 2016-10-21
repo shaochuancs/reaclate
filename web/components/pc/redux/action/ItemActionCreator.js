@@ -2,7 +2,7 @@
  * Created by cshao on 8/19/16.
  */
 
-"use strict";
+'use strict';
 
 function listItem(items) {
   return {

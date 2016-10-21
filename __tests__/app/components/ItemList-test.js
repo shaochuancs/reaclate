@@ -2,10 +2,10 @@
  * Created by cshao on 8/25/16.
  */
 
-"use strict";
+'use strict';
 
 const React = require('react');
-const ReactDOM = require('react-dom');
+require('react-dom');
 const TestUtils = require('react-addons-test-utils');
 
 const relativeToRoot = '../../../';

@@ -2,7 +2,7 @@
  * Created by cshao on 9/20/16.
  */
 
-"use strict";
+'use strict';
 
 const relativeToRoot = '../../';
 const config_file = relativeToRoot + require(relativeToRoot + 'tests').config_path + '/config';

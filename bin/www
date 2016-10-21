@@ -3,7 +3,7 @@
  * Created by cshao on 6/5/16.
  */
 
-"use strict";
+'use strict';
 
 const debugServer = require('debug')('reaclate:server');
 const http = require('http');

@@ -2,7 +2,7 @@
  * Created by cshao on 8/22/16.
  */
 
-"use strict";
+'use strict';
 
 import {connect} from 'react-redux';
 import {listItemAction, deleteItemAction} from '../action/ItemActionCreator';

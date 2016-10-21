@@ -2,7 +2,7 @@
  * Created by cshao on 8/8/16.
  */
 
-"use strict";
+'use strict';
 
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;

@@ -2,7 +2,7 @@
  * Created by cshao on 8/7/16.
  */
 
-"use strict";
+'use strict';
 
 var React = require('react');
 var api = require('../../common/api');

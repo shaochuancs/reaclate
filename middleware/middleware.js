@@ -2,7 +2,7 @@
  * Created by cshao on 6/12/16.
  */
 
-"use strict";
+'use strict';
 
 const debugServer = require('debug')('reaclate:server');
 const util = require('util');
@@ -43,9 +43,9 @@ var handleError = function(isDev, err, req, res) {
     error: errorObj
   });
 };
-exports.devErrorHandler = function(err, req, res, next) {
+exports.devErrorHandler = function(err, req, res) {
   handleError(true, err, req, res);
 };
-exports.prodErrorHandler = function(err, req, res, next) {
+exports.prodErrorHandler = function(err, req, res) {
   handleError(false, err, req, res);
 };

@@ -2,7 +2,7 @@
  * Created by cshao on 8/24/16.
  */
 
-"use strict";
+'use strict';
 
 import React from 'react';
 import {Route, IndexRoute, RouterContext} from 'react-router';
