@@ -2,7 +2,7 @@
  * Created by cshao on 8/25/16.
  */
 
-"use strict";
+'use strict';
 
 const relativeToRoot = '../../../';
 const reducer_file = relativeToRoot + require(relativeToRoot + 'tests').app_path + '/reducer/emailReducer';

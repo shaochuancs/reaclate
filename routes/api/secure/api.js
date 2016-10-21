@@ -2,12 +2,10 @@
  * Created by cshao on 6/12/16.
  */
 
-"use strict";
+'use strict';
 
 const express = require('express');
 const router = express.Router();
-
-var utils = require('../../../utils/utils');
 
 router.get('/item-list', function(req, res) {
   if (req.query.page == 2) {

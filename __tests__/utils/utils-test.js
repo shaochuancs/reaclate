@@ -2,7 +2,7 @@
  * Created by cshao on 8/25/16.
  */
 
-"use strict";
+'use strict';
 
 const relativeToRoot = '../../';
 const utils_file = relativeToRoot + require(relativeToRoot + 'tests').utils_path + '/utils';
@@ -92,6 +92,8 @@ describe('Test error handler', () => {
     });
   });
   it('should handle plain listen error', () => {
-    expect(function(){utils.handleError(sampleListenError, 3000, new Function())}).toThrowError('sample listen error');
+    expect(function(){
+      utils.handleError(sampleListenError, 3000, new Function());
+    }).toThrowError('sample listen error');
   });
 });

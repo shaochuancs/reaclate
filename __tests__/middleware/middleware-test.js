@@ -2,7 +2,7 @@
  * Created by cshao on 9/20/16.
  */
 
-"use strict";
+'use strict';
 
 const relativeToRoot = '../../';
 const middlewares_file = relativeToRoot + require(relativeToRoot + 'tests').middleware_path + '/middleware';

@@ -2,7 +2,7 @@
  * Created by cshao on 6/12/16.
  */
 
-"use strict";
+'use strict';
 
 const express = require('express');
 const router = express.Router();

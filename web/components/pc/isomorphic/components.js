@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var LoginFormIsomorphic = require('./LoginForm');
 var MyAccountIsomorphic = require('./MyAccount');

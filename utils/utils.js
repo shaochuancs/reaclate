@@ -2,9 +2,7 @@
  * Created by cshao on 6/12/16.
  */
 
-"use strict";
-
-const debugServer = require('debug')('reaclate:server');
+'use strict';
 
 var WebComponents = require('../web/static/compiled/scripts/pc/isomorphic_components');
 var AppComponents = require('../web/static/compiled/scripts/pc/app_components');

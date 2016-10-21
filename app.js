@@ -2,7 +2,6 @@
  * Created by cshao on 6/5/16.
  */
 
-const debugServer = require('debug')('reaclate:server');
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -15,7 +14,6 @@ const moreRelative = require('nunjucks-more-relative');
 moreRelative(nunjucks);
 
 const middleware = require('./middleware/middleware');
-const utils = require('./utils/utils');
 const routes = require('./routes/index');
 
 const isProdMode = process.env.NODE_ENV === 'production';
@@ -41,7 +39,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.configRoute = function(secret) {
+app.configRoute = function() {
   app.use('/', routes);
 
   app.use('/static', express.static(path.join(__dirname, 'web/static'), {'extensions': ['html', 'js', 'css'], 'maxAge': '7d'}));
