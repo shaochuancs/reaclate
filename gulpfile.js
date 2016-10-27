@@ -1,4 +1,7 @@
+'use strict';
+
 const gulp = require('gulp');
+const gls = require('gulp-live-server');
 const del = require('del');
 const eslint = require('gulp-eslint');
 const gulpif = require('gulp-if');
@@ -51,7 +54,7 @@ gulp.task('lint', function() {
 });
 
 //PC Scripts
-gulp.task('pc_scripts', ['pc_lib'], function() {
+gulp.task('pc_scripts', function() {
   return browserify({
     entries: ['./web/components/pc/reaclate.jsx'],
     transform: [babelify],
@@ -140,14 +143,30 @@ gulp.task('default', ['clean'], function() {
     var constants = content + 'exports.API_X = \'' + obj.API_X + '\';';
     fs.writeFileSync('config/constants.js', constants);
 
-    runSequence(['views', 'stylesheets', 'lint'], ['pc_scripts', 'isomorphic_components', 'app_components'], function() {
+    runSequence(['views', 'stylesheets', 'lint'], ['pc_lib', 'pc_scripts', 'isomorphic_components', 'app_components'], function() {
       gulp.start('test');
     });
   });
 });
 
-gulp.task('watch', ['default'], function() {
+gulp.task('serve', function() {
+  var server = gls.new('bin/www');
+  server.start();
+
   gulp.watch(['web/stylesheets/**/*.less'], ['stylesheets']);
-  gulp.watch(['web/components/**/*.js', 'web/components/**/*.jsx'], ['scripts']);
+  gulp.watch(['web/components/**/*.js', 'web/components/**/*.jsx'], ['pc_scripts', 'app_components']);
   gulp.watch('web/views/*.html', ['views']);
+
+  gulp.watch(['web/static/**/*'], function(file) {
+    server.notify.apply(server, [file]);
+  });
+  gulp.watch([
+    'bin/www',
+    'middleware/*.js',
+    'routes/**/*.js',
+    'utils/*.js',
+    'app.js'],
+    function() {
+      server.start.bind(server)();
+    });
 });
