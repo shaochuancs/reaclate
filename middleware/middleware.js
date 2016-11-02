@@ -43,9 +43,9 @@ var handleError = function(isDev, err, req, res) {
     error: errorObj
   });
 };
-exports.devErrorHandler = function(err, req, res) {
+exports.devErrorHandler = function(err, req, res, next) { // eslint-disable-line no-unused-vars
   handleError(true, err, req, res);
 };
-exports.prodErrorHandler = function(err, req, res) {
+exports.prodErrorHandler = function(err, req, res, next) { // eslint-disable-line no-unused-vars
   handleError(false, err, req, res);
 };
