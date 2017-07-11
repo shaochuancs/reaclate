@@ -49,3 +49,10 @@ exports.devErrorHandler = function(err, req, res, next) { // eslint-disable-line
 exports.prodErrorHandler = function(err, req, res, next) { // eslint-disable-line no-unused-vars
   handleError(false, err, req, res);
 };
+
+exports.customHeaderAttacher = function(req, res, next) {
+  res.set({
+    'X-XSS-Protection': '1; mode=block'
+  });
+  next();
+};

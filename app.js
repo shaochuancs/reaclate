@@ -31,6 +31,8 @@ if (!isProdMode) {
 }
 nunjucks.configure([path.join(__dirname, 'web/static/compiled/views')], nunjucksConf);
 app.set('view engine', 'html');
+app.disable('x-powered-by');
+app.use(middleware.customHeaderAttacher);
 
 app.use(compress());
 app.use(favicon(__dirname + '/web/static/images/common/favicon.ico'));
